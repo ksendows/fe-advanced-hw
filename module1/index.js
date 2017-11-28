@@ -70,10 +70,16 @@ const day = 02;
 const month = 10;
 const year = 2017;
 
-const date = `${day}/${month}/${year}`;
+if (day < 10) {
+  var date = `0${day}/${month}/${year}`;
+} else {
+  var date = `${day}/${month}/${year}`;
+}
+
+  console.log(date); // "02/10/2017"
 
 
-console.log(date); // "02/10/2017"
+
 
 
 
