@@ -70,7 +70,7 @@ const day = 02;
 const month = 10;
 const year = 2017;
 
-const date = "0" + day + "/" + month + "/" + year;
+const date = `${day}/${month}/${year}`;
 
 
 console.log(date); // "02/10/2017"
@@ -163,7 +163,7 @@ const padding = "20px";
 const border = "5px";
 const contentWidth = "100px";
 
-let totalWidth = parseInt(padding) + parseInt(border) + parseInt(contentWidth) + "px";
+let totalWidth = parseInt(padding)*2 + parseInt(border)*2 + parseInt(contentWidth) + "px";
 
 console.log(totalWidth); // '125px'
 
@@ -189,7 +189,7 @@ const padding1 = "20.25px";
 const border1 = "5.15px";
 const contentWidth1 = "100.45px";
 
-let totalWidth1 = parseFloat(padding1) + parseFloat(border1) + parseFloat(contentWidth1) + "px";
+let totalWidth1 = parseFloat(padding1)*2 + parseFloat(border1)*2 + parseFloat(contentWidth1) + "px";
 
 console.log(totalWidth1); // '125.85px'
 
