@@ -53,10 +53,45 @@ switch (languageSelect) {
 
 const getRandom = (min, max) => Math.floor(Math.random() * (max - min)) + min;
 
-const getRandCharInAlph = (language) => keyboard.layouts[language].topRow[getRandom(0,keyboard.layouts[language].topRow.length)];
 
+// Первый способ - функция getRandCharInAlph
+
+let randomRow = getRandom  (0, 3);
+switch (randomRow) {
+    case 0:
+        randomRow = "topRow";
+        break;
+    case 1:
+        randomRow = "middleRow";
+        break;
+    case 2:
+        randomRow = "bottomRow";
+        break;
+};
+
+const getRandCharInAlph = (language) =>
+keyboard.layouts[language][randomRow][getRandom(0,keyboard.layouts[language][randomRow].length)];
+
+
+// Второй способ - функция getRandCharInAlph1
+
+const getRandCharInAlph1 = (language) => {
+    switch (language) {
+        case "en":
+            alphabet = ALPHABET_EN;
+            break;
+        case "ru":
+            alphabet = ALPHABET_RU;
+            break;
+        case "ua":
+            alphabet = ALPHABET_UA;
+            break;
+    }
+    return alphabet.charAt(getRandom(0,alphabet.length));
+}
 
 if (languageSelect) {
-    console.log (`Случайная буква: ${getRandCharInAlph(keyboard.currentLang)}`);
+    console.log (`Случайная буква (первый способ - функция getRandCharInAlph): ${getRandCharInAlph(keyboard.currentLang)}`);
+    console.log (`Случайная буква (второй способ - функция getRandCharInAlph1): ${getRandCharInAlph1(keyboard.currentLang)}`);
 }
 
