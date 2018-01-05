@@ -30,14 +30,18 @@ const keyboard = {
     },
     langs: ['en', 'ru', 'ua'],
     currentLang: ''
-};
+}
 
-let languageSelect;
-while (languageSelect !== "0" && languageSelect != "1" && languageSelect != "2" && languageSelect !== null) {
-    languageSelect = prompt("Выберите, пожалуйста, язык (en-0, ru-1, ua-2):")
-    if (languageSelect !== "0" && languageSelect != "1" && languageSelect != "2" && languageSelect !== null) {
+
+let languageSelect = prompt("Выберите, пожалуйста, язык (en-0, ru-1, ua-2):");
+
+switch (true) {
+    case (languageSelect == "0" || languageSelect == "1" || languageSelect == "2" || languageSelect == null):
+        break;
+    default:
         alert ("Был выбран не правильный язык, повторите попытку");
-    };
+        languageSelect = prompt("Выберите, пожалуйста, язык (en-0, ru-1, ua-2):");
+        break;
 }
 
 switch (languageSelect) {
