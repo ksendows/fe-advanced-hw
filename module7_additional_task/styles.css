@@ -1,0 +1,32 @@
+* {
+	margin-left: auto;
+	margin-right: auto;
+}
+.card-container {
+	padding-top: 20px;
+	margin-bottom: 20px;
+	width: 352px;
+	height: 522px;
+	background-color: #ebebf3;
+}
+.avatar {
+	display: block;
+}
+.info {
+	width: 313px;
+	height: 168px;
+	background-color: white;
+	border-radius: 0 0 15px 15px;
+}
+.title {
+	font-family: 'Open Sans Condensed', sans-serif;
+	text-align: center;
+}
+.marks-container {
+	width: 70%;
+	display: flex;
+}
+.marks {
+	line-height: 30px;
+	padding-right: 35px;
+}
