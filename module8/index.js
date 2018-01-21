@@ -48,7 +48,6 @@ const keyboardPressed = event => {
         else if (a == 186) {a = 59}
           else if (a == 32) {return button.innerHTML == "space"}
 
-    if (a == 46 && )
     return button.innerHTML.toUpperCase().charCodeAt(0) == a;
   });
   
