@@ -61,9 +61,7 @@ function validate(evt) {
 }
 
 function showRes(results) {
-  let html;
-
-  html += htmlToShow(results.firstNameValidate, "First Name");
+  let html = htmlToShow(results.firstNameValidate, "First Name");
   html += htmlToShow(results.lastNameValidate, "Last Name");
   html += htmlToShow(results.telValidate, "Telephone");
 
