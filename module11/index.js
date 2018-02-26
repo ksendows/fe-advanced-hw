@@ -12,6 +12,7 @@ getBtn.addEventListener("click", getUsers);
 
 
 function getUsers(evt) {
+  // debugger;
         evt.preventDefault();
         let apiUrlRequest = `${apiUrl}`;
   fetch(apiUrlRequest)
@@ -48,17 +49,18 @@ const addBtn = document.querySelector("#js-add");
 addBtn.addEventListener("click", addUser);
 
 function addUser(evt) {
-        evt.preventDefault();
-        let apiUrlRequest = `${apiUrl}`;
-        let data = {name: `${inputName.value}`, score: `${inputScore.value}`};
-        inputName.value = '';
-        inputScore.value = '';
+  // debugger;
+  evt.preventDefault();
+  let apiUrlRequest = `${apiUrl}?action=1&name=${inputName.value}&score=${inputScore.value}`;
+  let data = {"name": `${inputName.value}`, "score": `${inputScore.value}`};
 
   fetch(apiUrlRequest, {method: "POST", body: JSON.stringify(data)})
     .then(response => {
       if (response.ok) {
       result.innerHTML = `User with name: "${inputName.value}" and score: ${inputScore.value} was added to database`;
-        return response.json();
+      inputName.value = '';
+      inputScore.value = ''; 
+      return response.json();
       }
       throw new Error("Error adding data");
     })
@@ -66,7 +68,8 @@ function addUser(evt) {
     .catch(err => {
       console.error("Error: ", err);
       result.innerHTML = `Error adding user`;
-    })    
+    }) 
+  
 }
 
 // функция removeUser должна удалять из БД юзера по id.
@@ -79,10 +82,9 @@ removeBtn.addEventListener("click", removeUser);
 
 function removeUser(evt) {
 
-        evt.preventDefault();
-        let apiUrlRequest = `${apiUrl}?id=${inputIdRemove.value}`;
-        inputIdRemove.value = '';
-
+  evt.preventDefault();
+  let apiUrlRequest = `${apiUrl}?action=3&id=${inputIdRemove.value}`;
+        
   fetch(apiUrlRequest, {method: "DELETE"})
     .then(response => {
       console.log(response);
@@ -96,13 +98,14 @@ function removeUser(evt) {
     .catch(err => {
       console.error("Error: ", err);
       result.innerHTML = `Error deleting user`;
-    })    
+    }) 
+  inputIdRemove.value = '';   
 }
 
 // функция updateUser должна обновлять данные пользователя по id.
 
 const inputIdUpdate = document.querySelector("#input-id-update");
-const updateName = document.querySelector("#update-name");
+const inputNameUpdate = document.querySelector("#input-name-update");
 const updateScore = document.querySelector("#update-score");
 const updateBtn = document.querySelector("#js-update");
 
@@ -111,17 +114,18 @@ updateBtn.addEventListener("click", updateUser);
 
 function updateUser(evt) {
 
-        evt.preventDefault();
-        let apiUrlRequest = `${apiUrl}?id=${inputIdUpdate.value}`;
-        let data = {name: `${updateName.value}`, score: `${updateScore.value}`};
-        inputIdUpdate.value = '';
-        updateName.value = '';
-        updateScore.value = '';
+  evt.preventDefault();
+  // http://fecore.net.ua/rest/?action=2&id=1&name=Hey1&score=13 - изменение
+  let apiUrlRequest = `${apiUrl}?action=2&id=${inputIdUpdate.value}&name=${inputNameUpdate.value}`;
+  let data = {score: `${updateScore.value}`};
 
   fetch(apiUrlRequest, {method: "PUT", body: JSON.stringify(data)})
     .then(response => {
       if (response.ok) {
-      result.innerHTML = `User with id: ${inputName.value} was updated`;
+        result.innerHTML = `User with id: ${inputNameUpdate.value} was updated`;
+        inputIdUpdate.value = '';
+        inputNameUpdate.value = '';
+        updateScore.value = '';
         return response.json();
       }
       throw new Error("Error updating data");
