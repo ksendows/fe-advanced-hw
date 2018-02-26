@@ -85,12 +85,13 @@ function removeUser(evt) {
   evt.preventDefault();
   let apiUrlRequest = `${apiUrl}?action=3&id=${inputIdRemove.value}`;
         
-  fetch(apiUrlRequest, {method: "DELETE"})
+  fetch(apiUrlRequest, {method: "POST"})
     .then(response => {
-      console.log(response);
+      // console.log(response);
       if (response.ok) {
-      result.innerHTML = `User with id: ${inputName.value} was deleted`;
-        return response.json();
+        result.innerHTML = `User with id: ${inputIdRemove.value} was deleted`;
+      inputIdRemove.value = '';   
+      return response.json();
       }
       throw new Error("Error deleting data");
     })
@@ -99,7 +100,7 @@ function removeUser(evt) {
       console.error("Error: ", err);
       result.innerHTML = `Error deleting user`;
     }) 
-  inputIdRemove.value = '';   
+    
 }
 
 // функция updateUser должна обновлять данные пользователя по id.
@@ -113,16 +114,15 @@ const updateBtn = document.querySelector("#js-update");
 updateBtn.addEventListener("click", updateUser);
 
 function updateUser(evt) {
-
+  // debugger;
   evt.preventDefault();
-  // http://fecore.net.ua/rest/?action=2&id=1&name=Hey1&score=13 - изменение
-  let apiUrlRequest = `${apiUrl}?action=2&id=${inputIdUpdate.value}&name=${inputNameUpdate.value}`;
-  let data = {score: `${updateScore.value}`};
 
-  fetch(apiUrlRequest, {method: "PUT", body: JSON.stringify(data)})
+  let apiUrlRequest = `${apiUrl}?action=2&id=${inputIdUpdate.value}&name=${inputNameUpdate.value}&score=${updateScore.value}`;
+
+  fetch(apiUrlRequest, {method: "POST"})
     .then(response => {
       if (response.ok) {
-        result.innerHTML = `User with id: ${inputNameUpdate.value} was updated`;
+        result.innerHTML = `User with name: ${inputNameUpdate.value} was updated`;
         inputIdUpdate.value = '';
         inputNameUpdate.value = '';
         updateScore.value = '';
