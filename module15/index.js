@@ -87,3 +87,5 @@ console.log(timer3);
 let stopWatch = new Timer();
 startBtn.addEventListener('click', () => {stopWatch.start()});
 stopBtn.addEventListener('click', () => {stopWatch.stop()});
+
+Timer.timeToNY();
