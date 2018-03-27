@@ -1,0 +1,11 @@
+#timer {
+  color: white;
+}
+.timer-button {
+  margin: 15px;
+  padding: 5px;
+  border-radius: 15%;
+}
+.timer-container {
+  width: 30%;
+}

@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Webpack Starter Kit</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/3.2.0/lodash.js"></script>
+</head>
+
+<body>
+  <header class="header">
+  <div class="timer-container">
+    <h2>Timer</h2>
+    <p id="timer">00:00:00</p>
+    <button id="start-button" class="timer-button">Start</button>
+    <button id="stop-button" class="timer-button">Stop</button>
+  </div>
+
+  <div class="validation-container">
+    <h2>Validation</h2>
+      <div class="container">
+        <div class="row">
+          <form class="col s12 m6" acrion="#">
+            <div class="row">
+              <div class="input-field col s9">
+                <input placeholder="First name" id="first_name" type="text" class="validate">
+                <label for="first_name"></label>
+              </div>
+              <div class="input-field col s9">
+                <input placeholder="Last name" id="last_name" type="text" class="validate">
+                <label for="last_name"></label>
+              </div>
+              <div class="input-field col s9">
+                <input placeholder="tel +xxx xx xx xx xxx" id="tel" type="text" class="validate">
+                <label for="tel"></label>
+              </div>
+              <div class="col s9">
+                <button class="btn waves-effect waves-light" id="submit-btn" type="submit" name="action">Submit</button>
+              </div>
+            </div>
+          </form>
+          <ul class="results col s12">
+          </ul>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <h2>Keyboard Trainer</h2>
+  <div class="exercise"></div>
+  <div class="exercise__input"></div>
+  <span class="slider__header">Sound</span>
+  <label for="slideThree" class="slideThree">
+    <input type="checkbox" value="None" id="slideThree" name="check" checked />
+    <div for="slider"></div>
+  </label>
+
+  <div class="keyboard">
+    <div class="keyboard__row">
+      <button class="keyboard__btn" data-note="do">q</button>
+      <button class="keyboard__btn" data-note="re">w</button>
+      <button class="keyboard__btn" data-note="mi">e</button>
+      <button class="keyboard__btn" data-note="fa">r</button>
+      <button class="keyboard__btn" data-note="sol">t</button>
+      <button class="keyboard__btn" data-note="la">y</button>
+      <button class="keyboard__btn" data-note="la">u</button>
+      <button class="keyboard__btn" data-note="sol">i</button>
+      <button class="keyboard__btn" data-note="fa">o</button>
+      <button class="keyboard__btn" data-note="mi">p</button>
+      <button class="keyboard__btn" data-note="re">[</button>
+      <button class="keyboard__btn" data-note="do">]</button>
+    </div>
+    <div class="keyboard__row">
+      <button class="keyboard__btn" data-note="do">a</button>
+      <button class="keyboard__btn" data-note="re">s</button>
+      <button class="keyboard__btn" data-note="mi">d</button>
+      <button class="keyboard__btn" data-note="fa">f</button>
+      <button class="keyboard__btn" data-note="sol">g</button>
+      <button class="keyboard__btn" data-note="la">h</button>
+      <button class="keyboard__btn" data-note="la">j</button>
+      <button class="keyboard__btn" data-note="sol">k</button>
+      <button class="keyboard__btn" data-note="fa">l</button>
+      <button class="keyboard__btn" data-note="mi">;</button>
+      <button class="keyboard__btn" data-note="re">'</button>
+    </div>
+    <div class="keyboard__row">
+      <button class="keyboard__btn" data-note="do">z</button>
+      <button class="keyboard__btn" data-note="re">x</button>
+      <button class="keyboard__btn" data-note="mi">c</button>
+      <button class="keyboard__btn" data-note="fa">v</button>
+      <button class="keyboard__btn" data-note="sol">b</button>
+      <button class="keyboard__btn" data-note="sol">n</button>
+      <button class="keyboard__btn" data-note="fa">m</button>
+      <button class="keyboard__btn" data-note="mi">,</button>
+      <button class="keyboard__btn" data-note="re">.</button>
+      <button class="keyboard__btn" data-note="do">/</button>
+    </div>
+    <div class="keyboard__row">
+      <button class="keyboard__btn keyboard__btn--space" data-note="do">space</button>
+    </div>
+  </div>
+  <audio class="sonidos" src="http://goo.gl/T1rxRG" data-note="do"></audio>
+  <audio class="sonidos" src="http://goo.gl/KT8FN3" data-note="re"></audio>
+  <audio class="sonidos" src="http://goo.gl/1SfsNS" data-note="mi"></audio>
+  <audio class="sonidos" src="http://goo.gl/OsOCXe" data-note="fa"></audio>
+  <audio class="sonidos" src="http://goo.gl/vukZmv" data-note="sol"></audio>
+  <audio class="sonidos" src="http://goo.gl/Bjd9KT" data-note="la"></audio>
+  <audio class="sonidos" src="http://goo.gl/MS9HTp" data-note="si"></audio>
+              
+  <h2>Fetch requests</h2>
+    <div class="container-fetch">
+      <form class="search-form">
+        <button class="mdc-btn" type="submit" id="js-get">Get users from database</button>
+      </form>
+      <form class="search-form">
+        <input type="text" placeholder="Enter user name" id="input-name">
+        <input type="text" placeholder="Enter user score" id="input-score">
+        <button class="mdc-btn" type="submit" id="js-add">Add user</button>
+      </form>
+      <form class="search-form">
+        <input type="text" placeholder="Enter user id" id="input-id-remove">
+        <button class="mdc-btn" type="submit" id="js-remove">Remove user</button>
+      </form>
+      <form class="search-form">
+        <input type="text" placeholder="Enter user id" id="input-id-update">
+        <input type="text" placeholder="Enter user name" id="input-name-update">
+        <input type="text" placeholder="Update user score" id="update-score">
+        <button class="mdc-btn" type="submit" id="js-update">Update user</button>
+      </form>
+      <p class="result"></p>
+    </div>
+
+</body>
+
+</html>
