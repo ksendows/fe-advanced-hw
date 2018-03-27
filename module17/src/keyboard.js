@@ -5,19 +5,21 @@ const playSound = note => {
 };
 
 const buttons = Array.from(document.querySelectorAll("button"));
-const keys = "qwertyuiop[]asdfghjkl;'zxcvbnm,./".split("");
+const keysString = "qwertyuiop[]asdfghjkl;'zxcvbnm,./";
+const keys = keysString.split("");
 const slider = document.querySelector("#slideThree");
 const activeBtn = {
   node: null
 };
-const keyPressed = [];
+let keyPressed = [];
 
-const string = "qryte";
-const charsArr = string.split("");
+let string = '';
+let charsArr = [];
+
 const timerOutput = document.querySelector("#timer");
 const exercise = document.querySelector(".exercise");
-exercise.textContent = `Наберите строку: ${string}`;
 const exerciseInput = document.querySelector(".exercise__input");
+const exerciseBtn = document.querySelector(".exercise__button");
 
 const timer = {
   currentTime: 0,
@@ -30,8 +32,8 @@ if (localStorage.getItem("bestResult")) {
   alert(`Ваш лучший результат - ${localStorage.getItem("bestResult")} правильных символов в секунду. Пройти еще раз чтобы улучшить результат`);
 }
 
-const keyboardPressed = event => {
-
+function keyboardPressed(event) {
+  // debugger;
   if (activeBtn.node) {
     activeBtn.node.classList.remove("keyboard__btn--active");
   };
@@ -67,7 +69,7 @@ function startTimer(event) {
   };
 }
 
-const startExercise = event => {
+function startExercise(event) {
   debugger;
   if (keyPressed.length < charsArr.length) {
     keyPressed.push(event.key);
@@ -77,9 +79,9 @@ const startExercise = event => {
   if (keyPressed.length == charsArr.length) {
     clearInterval(timer.id);
     countKPS(timer.currentTime);
-    window.removeEventListener("keypress", startTimer);
-    window.removeEventListener("keypress", keyboardPressed);
-    window.removeEventListener("keypress", startExercise);
+    window.removeEventListener("keydown", startTimer);
+    window.removeEventListener("keydown", keyboardPressed);
+    window.removeEventListener("keydown", startExercise);
   }
 }
 
@@ -93,7 +95,8 @@ function countKPS(time) {
   // браузеру нужно время, что прорисовать часы и подсветку последней клавиши,
   // алерт выскакивает не дожидаясь, поэтому добавила 20мс
   setTimeout(() => alert(`Ваша скорость: ${speed} правильных символов в секунду. 
-    Чтобы пройти еще раз, перегрузите страницу.`), 20);
+    
+Чтобы пройти еще раз, перегрузите страницу или нажмите кнопку "Пройти упражнение".`), 20);
 
   if (localStorage.getItem("bestResult") < speed) {
     localStorage.setItem("bestResult", speed);
@@ -116,14 +119,22 @@ function getFormattedTime(time) {
   return `${mt}:${sc}:${ms}`;
 }
 
-// import 'timer.js';
-// let keyboardTimer = new Timer();
-// window.addEventListener('click', () => { keyboardTimer.start() });
-// window.addEventListener("keypress", stopWatch.start);
-// window.addEventListener("keypress", keyboardPressed);
-window.addEventListener("keypress", startTimer);
-window.addEventListener("keypress", startExercise);
-window.addEventListener("keydown", keyboardPressed);
+function exerxiseBtnPressed() {
+  debugger;
+  exerciseInput.textContent = '';
+  string = '';
+  for (let i = 0; i < 5; i++) {
+    string += keysString.charAt(Math.floor(Math.random() * keysString.length));
+  }
+  exercise.textContent = `Наберите строку: ${string}`;
+  charsArr = string.split("");
+  keyPressed = [];
+  window.addEventListener("keydown", startTimer);
+  window.addEventListener("keydown", startExercise);
+  window.addEventListener("keydown", keyboardPressed);
+}
+
+exerciseBtn.addEventListener("click", exerxiseBtnPressed);
 
 
 

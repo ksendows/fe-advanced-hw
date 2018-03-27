@@ -27,9 +27,13 @@ function validate(evt) {
   tel.value = "";
   firstname.value = "";
   lastname.value = "";
-
-  console.log(results);
+  
   showRes(results);
+
+  // window.addEventListener("keypress", startTimer);
+  // window.addEventListener("keypress", startExercise);
+  // window.addEventListener("keydown", keyboardPressed);
+
   return results;
 }
 

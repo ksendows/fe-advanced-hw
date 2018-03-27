@@ -413,3 +413,9 @@ embed, img, object, video {
 .keyboard {
   background: rgba(106, 191, 64, 0.1);
 }
+
+.exercise__button {
+  margin: 15px;
+  padding: 5px;
+  border-radius: 5%;
+}
